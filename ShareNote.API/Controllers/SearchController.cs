@@ -10,11 +10,13 @@ namespace ShareNote.API.Controllers
     {
         private readonly ILogger<SearchController> _logger;
         private readonly ElasticsearchService _elasticsearchService;
+        private readonly ElasticsearchDataSeeder _elasticsearchDataSeeder;
 
-        public SearchController(ILogger<SearchController> logger, ElasticsearchService elasticsearchService)
+        public SearchController(ILogger<SearchController> logger, ElasticsearchService elasticsearchService, ElasticsearchDataSeeder elasticsearchDataSeeder)
         {
             _logger = logger;
             _elasticsearchService = elasticsearchService;
+            _elasticsearchDataSeeder = elasticsearchDataSeeder;
         }
 
         // POST api/search/index
@@ -38,12 +40,26 @@ namespace ShareNote.API.Controllers
         {
             try
             {
-                var results = _elasticsearchService.Search(query);
+                var results = _elasticsearchService.SearchInMultipleFieldsFuzziness(query);
                 return Ok(results);
             }
             catch (Exception ex)
             {
                 return BadRequest($"Error performing search: {ex.Message}");
+            }
+        }
+
+        [HttpPost("add-most-popular-websites")]
+        public IActionResult AddMostPopularWebsites()
+        {
+            try
+            {
+                _elasticsearchDataSeeder.AddMostPopularWebsites();
+                return Ok("Add most popular websites successfully.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error Add most popular websites: {ex.Message}");
             }
         }
     }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Nest;
 using ShareNote.Domain.Entities;
+
 namespace ShareNote.Infrasstructure
 {
     public class ElasticClientProvider
