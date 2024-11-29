@@ -82,13 +82,28 @@ namespace ShareNote.Infrasstructure
             var indexKeys = Builders<Note>.IndexKeys
                 .Text(note => note.Key)
                 .Text(note => note.Url)
-                .Text(note => note.Description);
+                .Text(note => note.Description)
+                .Text(note => note.Uuid);
 
             var indexOptions = new CreateIndexOptions { DefaultLanguage = "english" };
 
             // Create the index on the Notes collection
             var indexModel = new CreateIndexModel<Note>(indexKeys, indexOptions);
             _noteCollection.Indexes.CreateOne(indexModel);
+        }
+
+        public void DropExistingIndex(string indexName)
+        {
+            // Drop the existing index if needed
+            try
+            {
+                _noteCollection.Indexes.DropOne(indexName);
+                Console.WriteLine($"Index '{indexName}' dropped successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error dropping index: {ex.Message}");
+            }
         }
 
 

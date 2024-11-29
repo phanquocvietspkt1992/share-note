@@ -24,8 +24,17 @@ namespace ShareNote.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Note>> Create(Note note)
         {
-            var createdObject = await _repository.InsertOneAsync(note);
-            return CreatedAtAction(nameof(Create), new { id = createdObject.Id }, createdObject);
+            try
+            {
+                note.Uuid = Guid.NewGuid().ToString();
+                var createdObject = await _repository.InsertOneAsync(note);
+                return Ok(createdObject);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"{ex.Message}");
+            }
+
         }
         // GET api/notes
         [HttpGet("get-all")]
@@ -93,6 +102,23 @@ namespace ShareNote.API.Controllers
             {
                 // Call the service to clear all data
                 await _repository.ClearAllDataAsync();
+
+                // Return a success response
+                return Ok("All notes cleared successfully.");
+            }
+            catch (Exception ex)
+            {
+                // Handle any errors that may have occurred
+                return StatusCode(500, $"Error clearing notes: {ex.Message}");
+            }
+        }
+        [HttpDelete("drop-index")]
+        public async Task<IActionResult> DropExistingIndex(string indexName)
+        {
+            try
+            {
+                // Call the service to clear all data
+                _repository.DropExistingIndex(indexName);
 
                 // Return a success response
                 return Ok("All notes cleared successfully.");

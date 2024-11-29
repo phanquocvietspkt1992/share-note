@@ -30,7 +30,16 @@ else if (dbProvider == "PostgreSQL")
     // builder.Services.AddDbContext<ApiDbContext>(options =>
     //     options.UseNpgsql(configuration.GetConnectionString("PostgreSqlConnection")));
     // builder.Services.AddScoped<IApiObjectRepository, SqlApiObjectRepository>();
-}
+};
+builder.Services.AddCors(options =>
+  {
+      options.AddPolicy("AllowAngularApp", builder =>
+      {
+          builder.WithOrigins("http://localhost:4200") // Allow Angular frontend
+                 .AllowAnyMethod()                 // Allow any HTTP methods (GET, POST, etc.)
+                 .AllowAnyHeader();                // Allow any headers
+      });
+  });
 // Register services
 builder.Services.AddSingleton<ElasticClientProvider>();
 builder.Services.AddScoped<ElasticsearchService>();
@@ -44,7 +53,8 @@ builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
-
+// Enable CORS using the configured policy
+app.UseCors("AllowAngularApp");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

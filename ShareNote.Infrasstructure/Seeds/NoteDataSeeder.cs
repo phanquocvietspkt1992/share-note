@@ -136,7 +136,7 @@ namespace ShareNote.Infrasstructure.Seeds
             {
                 notes.Add(new Note
                 {
-                    Id = i + 1,
+                    Uuid = Guid.NewGuid().ToString(),
                     Key = websites[i].Name,
                     Url = websites[i].Url,
                     Description = websites[i].Description

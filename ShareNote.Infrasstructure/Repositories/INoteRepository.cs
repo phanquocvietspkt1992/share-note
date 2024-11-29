@@ -12,6 +12,7 @@ namespace ShareNote.Infrasstructure
         Task InsertManyAsync(List<Note> notes);
         void CreateTextIndex();
         Task ClearAllDataAsync();
+        void DropExistingIndex(string indexName);
     }
 
 }
