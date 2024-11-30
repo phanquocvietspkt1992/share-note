@@ -8,7 +8,6 @@ namespace ShareNote.Domain.Entities
 {
     public class Note
     {
-        public int Id { get; set; }
         public string Uuid { get; set; }
         public string Key { get; set; }
         public string Url { get; set; }
