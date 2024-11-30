@@ -16,25 +16,25 @@ services:
   #     - elasticsearch   # Ensures Elasticsearch is started before the API
 
   # Elasticsearch Service
-  elasticsearch:
-    image: elasticsearch:7.17.0
-    container_name: elasticsearch
-    environment:
-      - discovery.type=single-node
-    ports:
-      - "9200:9200" # Exposes port 9200 from the container to port 9200 on the host
-      - "9300:9300" # Port for internal communication (not usually needed for external access)
-    ulimits:
-      nproc: 65536
-      nofile: 65536
-    volumes:
-      - esdata:/usr/share/elasticsearch/data # Named volume for Elasticsearch data
-    networks:
-      - backend
+  # elasticsearch:
+  #   image: elasticsearch:7.17.0
+  #   container_name: elasticsearch
+  #   environment:
+  #     - discovery.type=single-node
+  #   ports:
+  #     - "9200:9200" # Exposes port 9200 from the container to port 9200 on the host
+  #     - "9300:9300" # Port for internal communication (not usually needed for external access)
+  #   ulimits:
+  #     nproc: 65536
+  #     nofile: 65536
+  #   volumes:
+  #     - esdata:/usr/share/elasticsearch/data # Named volume for Elasticsearch data
+  #   networks:
+  #     - backend
 
   # MogoDB Service
   mongodb:
-    image: mongo:6.0
+    image: mongo
     container_name: mongodb_container
     restart: always
     ports:
@@ -43,10 +43,10 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
-      - mongodb_data:/data/db # Persistent volume for MongoDB data   
+      - mongodb_data1:/data/db1 # Persistent volume for MongoDB data   
   # Named volume for Elasticsearch data persistence
 volumes:
-  mongodb_data:
+  mongodb_data1:
   esdata:
     driver: local
   # Network for internal communication between containers

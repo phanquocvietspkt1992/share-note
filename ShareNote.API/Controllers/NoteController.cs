@@ -95,13 +95,30 @@ namespace ShareNote.API.Controllers
         }
 
         // DELETE api/notes/clear
-        [HttpDelete("clear")]
+        [HttpDelete("clear-notes")]
         public async Task<IActionResult> ClearAllNotes()
         {
             try
             {
                 // Call the service to clear all data
                 await _repository.ClearAllDataAsync();
+
+                // Return a success response
+                return Ok("All notes cleared successfully.");
+            }
+            catch (Exception ex)
+            {
+                // Handle any errors that may have occurred
+                return StatusCode(500, $"Error clearing notes: {ex.Message}");
+            }
+        }
+        [HttpDelete("clear-collections")]
+        public async Task<IActionResult> ClearCollections()
+        {
+            try
+            {
+                // Call the service to clear all data
+                _repository.ClearCollections("ApiDatabase");
 
                 // Return a success response
                 return Ok("All notes cleared successfully.");

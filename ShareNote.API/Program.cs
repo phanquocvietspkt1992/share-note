@@ -14,8 +14,8 @@ var dbProvider = configuration["DatabaseProvider"];
 if (dbProvider == "MongoDB")
 {
     var client = new MongoClient(configuration.GetConnectionString("MongoConnection"));
-    var database = client.GetDatabase("ApiDatabase");
-
+    var database = client.GetDatabase("MyDB");
+    database.CreateCollection("note-collection");
     builder.Services.AddSingleton<IMongoDatabase>(database);
     builder.Services.AddScoped<INoteRepository, MongoNoteRepository>();
 }

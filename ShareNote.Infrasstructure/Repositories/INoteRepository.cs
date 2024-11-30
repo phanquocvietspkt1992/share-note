@@ -13,6 +13,7 @@ namespace ShareNote.Infrasstructure
         void CreateTextIndex();
         Task ClearAllDataAsync();
         void DropExistingIndex(string indexName);
+        void ClearCollections(string databaseName);
     }
 
 }

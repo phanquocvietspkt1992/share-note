@@ -7,16 +7,20 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using Nest;
 using ShareNote.Domain.Entities;
+using Microsoft.Extensions.Configuration;
 
 namespace ShareNote.Infrasstructure
 {
     public class MongoNoteRepository : INoteRepository
     {
         private readonly IMongoCollection<Note> _noteCollection;
+        IConfiguration _configuration;
 
-        public MongoNoteRepository(IMongoDatabase database)
+        public MongoNoteRepository(IMongoDatabase database, IConfiguration configuration)
         {
-            _noteCollection = database.GetCollection<Note>("Notes");
+
+            _noteCollection = database.GetCollection<Note>("note-collection");
+            _configuration = configuration;
         }
 
         public async Task<Note> InsertOneAsync(Note note)
@@ -73,6 +77,19 @@ namespace ShareNote.Infrasstructure
             catch (Exception ex)
             {
                 Console.WriteLine($"Error clearing collection: {ex.Message}");
+            }
+        }
+
+        public void ClearCollections(string databaseName)
+        {
+            var client = new MongoClient(_configuration.GetConnectionString("MongoConnection"));
+            var database = client.GetDatabase(databaseName);
+            var collections = database.ListCollectionNames().ToList();
+
+            foreach (var collectionName in collections)
+            {
+                database.DropCollection(collectionName);
+                Console.WriteLine($"Dropped collection: {collectionName}");
             }
         }
 

@@ -1,0 +1,16 @@
+/Users/viet/Desktop/Projects/share-note/ShareNote.Infrasstructure/bin/Debug/net8.0/ShareNote.Infrasstructure.deps.json
+/Users/viet/Desktop/Projects/share-note/ShareNote.Infrasstructure/bin/Debug/net8.0/ShareNote.Infrasstructure.dll
+/Users/viet/Desktop/Projects/share-note/ShareNote.Infrasstructure/bin/Debug/net8.0/ShareNote.Infrasstructure.pdb
+/Users/viet/Desktop/Projects/share-note/ShareNote.Infrasstructure/bin/Debug/net8.0/ShareNote.Domain.dll
+/Users/viet/Desktop/Projects/share-note/ShareNote.Infrasstructure/bin/Debug/net8.0/ShareNote.Domain.pdb
+/Users/viet/Desktop/Projects/share-note/ShareNote.Infrasstructure/obj/Debug/net8.0/ShareNote.Infrasstructure.csproj.AssemblyReference.cache
+/Users/viet/Desktop/Projects/share-note/ShareNote.Infrasstructure/obj/Debug/net8.0/ShareNote.Infrasstructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/viet/Desktop/Projects/share-note/ShareNote.Infrasstructure/obj/Debug/net8.0/ShareNote.Infrasstructure.AssemblyInfoInputs.cache
+/Users/viet/Desktop/Projects/share-note/ShareNote.Infrasstructure/obj/Debug/net8.0/ShareNote.Infrasstructure.AssemblyInfo.cs
+/Users/viet/Desktop/Projects/share-note/ShareNote.Infrasstructure/obj/Debug/net8.0/ShareNote.Infrasstructure.csproj.CoreCompileInputs.cache
+/Users/viet/Desktop/Projects/share-note/ShareNote.Infrasstructure/obj/Debug/net8.0/ShareNote.Infrasstructure.sourcelink.json
+/Users/viet/Desktop/Projects/share-note/ShareNote.Infrasstructure/obj/Debug/net8.0/ShareNot.CBB7D7D2.Up2Date
+/Users/viet/Desktop/Projects/share-note/ShareNote.Infrasstructure/obj/Debug/net8.0/ShareNote.Infrasstructure.dll
+/Users/viet/Desktop/Projects/share-note/ShareNote.Infrasstructure/obj/Debug/net8.0/refint/ShareNote.Infrasstructure.dll
+/Users/viet/Desktop/Projects/share-note/ShareNote.Infrasstructure/obj/Debug/net8.0/ShareNote.Infrasstructure.pdb
+/Users/viet/Desktop/Projects/share-note/ShareNote.Infrasstructure/obj/Debug/net8.0/ref/ShareNote.Infrasstructure.dll
