@@ -35,7 +35,7 @@ services:
   # MogoDB Service
   mongodb:
     image: mongo
-    container_name: mongodb_container
+    container_name: mongodb
     restart: always
     ports:
       - "27017:27017" # Map the host port 27017 to the container port 27017
